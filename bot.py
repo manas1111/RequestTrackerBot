@@ -64,9 +64,9 @@ async def startHandler(bot:Update, msg:Message):
         reply_markup = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(
-                        "➕Add me to your Group.",
-                        url = f"https://telegram.me/{botInfo.username}?startgroup=true"
+                    
+                        
+                        
                     )
                 ]
             ]
