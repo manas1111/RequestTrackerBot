@@ -65,9 +65,10 @@ async def startHandler(bot:Update, msg:Message):
             [
                 [
                     InlineKeyboardButton(
-                        "📤Upload Channel📤",
-                        url = f"https://t.me/+jHVn7RNv9WE4ZDk1"
+                        "📤UPLOADS CHANNEL📤",
+                        url = f"https://t.me/+B_q7PnIdPJk5ZmY1"
                     )
+                    
                 ]
             ]
         )
@@ -90,7 +91,7 @@ async def forwardedHandler(bot:Update, msg:Message):
     forwardInfo = msg.forward_from_chat
     if forwardInfo.type == "channel":   # If message forwarded from channel
         await msg.reply_text(
-            f"<b>Hey😁, Your Channel ID is <code>{forwardInfo.id}</code>\n</b>",
+            f"<b>Hey😁, Your Channel ID is <code>{forwardInfo.id}</code>\n\n</b>",
             parse_mode = "html"
         )
     return
@@ -148,7 +149,7 @@ async def groupChannelIDHandler(bot:Update, msg:Message):
                 else:
                     if botSelfGroup.status != "administrator":  # If bot is not admin in group
                         await msg.reply_text(
-                            "<b>🥲Make me admin in Group, Then add use /add.\n</b>",
+                            "<b>🥲Make me admin in Group, Then add use /add.\n\n</b>",
                             parse_mode = "html"
                         )
                     else:   # If bot is admin in group
@@ -161,7 +162,7 @@ async def groupChannelIDHandler(bot:Update, msg:Message):
                             )
                         except (ChatIdInvalid, ChannelInvalid): # If given channel id is invalid
                             await msg.reply_text(
-                                "<b>😒Channel ID is wrong.\n</b>",
+                                "<b>😒Channel ID is wrong.\n\n</b>",
                                 parse_mode = "html"
                             )
                         else:
@@ -177,7 +178,7 @@ async def groupChannelIDHandler(bot:Update, msg:Message):
                                     }
                                 )
                                 await msg.reply_text(
-                                    "<b>Your Group and Channel has now been added SuccessFully🥳.\n</b>",
+                                    "<b>Your Group and Channel has now been added SuccessFully🥳.\n\</b>",
                                     parse_mode = "html"
                                 )
     else:   # If command is invalid
@@ -292,7 +293,7 @@ async def requestHandler(bot:Update, msg:Message):
                 )
             )
 
-            replyText = f"<b>👋 Hello {mentionUser} !!\n\n📍 Your Request for {contentRequested} has been submitted to the admins.\n\n🚀 Your Request Will Be Uploaded soon on the UPLOAD CHANNEL.\n📌 Please Note that Admins might be busy. So, this may take more time.\n\n👇 See Your Request Status Here 👇</b>"
+            replyText = f"<b>👋 Hello {mentionUser} !!\n\n📍 Your Request for {contentRequested} has been submitted to the admins.\n\n🚀 Your Request Will Be Uploaded soon on the UPLOADS CHANNEL.\n\n📌 Please Note that Admins might be busy. So, this may take more time.\n\n👇 See Your Request Status Here 👇</b>"
 
             # Sending message for user in group
             await msg.reply_text(
@@ -306,12 +307,6 @@ async def requestHandler(bot:Update, msg:Message):
                                 "⏳Request Status⏳",
                                 url = f"https://t.me/c/{channelIDPro}/{requestMSG.message_id}"
                             )
-                        ],
-                        [
-                            InlineKeyboardButton(
-                                "📤Upload Channel📤",
-                                url = f"https://t.me/+jHVn7RNv9WE4ZDk1"
-                                )
                         ]
                     ]
                 )
@@ -343,13 +338,13 @@ async def callBackButton(bot:Update, callback_query:CallbackQuery):
                         )
                     elif data == "completed":
                         return await callback_query.answer(
-                            "This request Is Completed🥳...\nCheckout in 📤UPLOAD📤 Channel😊",
+                            "This request Is Completed🥳...\nCheckout in Channel😊",
                             show_alert = True
                         )
                     user = await bot.get_chat_member(int(channelID), callback_query.from_user.id)
                     if user.status not in ("administrator", "creator"): # If accepting, rejecting request tried to be done by neither admin nor owner
                         await callback_query.answer(
-                            "Wait...?\nYour are not an Admin😒.",
+                            "Wait.....??\nYour are not Admin😒.",
                             show_alert = True
                         )
                     else:   # If accepting, rejecting request tried to be done by either admin or owner
@@ -396,11 +391,21 @@ async def callBackButton(bot:Update, callback_query:CallbackQuery):
                         )
 
                         # Result of request sent to group
-                        replyText = f"<b>Dear {mentionUser}🧑\nYour request for {contentRequested} {groupResult}\n👍Thanks for requesting!</b>"
+                        replyText = f"<b>Dear {mentionUser}🧑\nYour request for {contentRequested} {groupResult}\n👍Thanks for requesting!\n\n(Team SiC)</b>"
                         await bot.send_message(
                             int(groupID),
                             replyText,
-                            parse_mode = "html"
+                            parse_mode = "html",
+                            reply_markup = InlineKeyboardMarkup(
+                                [
+                                    [
+                                        InlineKeyboardButton(
+                                            "📤UPLOAD CHANNEL📤",
+                                            url = f"https://t.me/+B_q7PnIdPJk5ZmY1"
+                                        )
+                                    ]
+                                ]
+                            )
                         )
                     return
     return
