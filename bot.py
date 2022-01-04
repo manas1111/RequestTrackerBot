@@ -305,6 +305,12 @@ async def requestHandler(bot:Update, msg:Message):
                             InlineKeyboardButton(
                                 "⏳Request Status⏳",
                                 url = f"https://t.me/c/{channelIDPro}/{requestMSG.message_id}"
+							InlineKeyboardButton(
+								"Upload Channel",
+								url=f"https://t.me/+jHVn7RNv9WE4ZDk1"
+							
+							)
+							
                             )
                         ]
                     ]
@@ -338,17 +344,9 @@ async def callBackButton(bot:Update, callback_query:CallbackQuery):
                     elif data == "completed":
                         return await callback_query.answer(
                             "This request Is Completed🥳...\nCheckout in Channel😊",
-                            show_alert = True )
-                        reply_markup = InlineKeyboardMarkup(
-                            [
-                                [
-                                    InlineKeyboardButton(
-                                        "Upload Channel",
-                                        url=f"https://t.me/+jHVn7RNv9WE4ZDk1"
-                                    )
-                                ]
-                            ]    
-                    
+                            show_alert = True
+						)
+					
                     user = await bot.get_chat_member(int(channelID), callback_query.from_user.id)
                     if user.status not in ("administrator", "creator"): # If accepting, rejecting request tried to be done by neither admin nor owner
                         await callback_query.answer(
