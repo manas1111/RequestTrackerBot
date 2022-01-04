@@ -304,14 +304,12 @@ async def requestHandler(bot:Update, msg:Message):
                         [
                             InlineKeyboardButton(
                                 "⏳Request Status⏳",
-                                url = f"https://t.me/c/{channelIDPro}/{requestMSG.message_id}"
-							InlineKeyboardButton(
-								"Upload Channel",
-								url=f"https://t.me/+jHVn7RNv9WE4ZDk1"
-							
-							)
-							
-                            )
+                                url = f"https://t.me/c/{channelIDPro}/{requestMSG.message_id}")
+			    InlineKeyboardButton(
+				    "Upload Channel",
+				    url=f"https://t.me/+jHVn7RNv9WE4ZDk1"
+			    )
+			
                         ]
                     ]
                 )
