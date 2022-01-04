@@ -59,7 +59,7 @@ requestRegex = "#[rR][eE][qQ][uU][eE][sS][tT] "
 async def startHandler(bot:Update, msg:Message):
     botInfo = await bot.get_me()
     await msg.reply_text(
-        "<b>Hi this is SiC Request Bot\nThe requests can be registered by typing<b>(#request)</b>in the group.\nRest of the things will be handled by admins itself.\nMaintainer: Chaitanya Gupta (Team SiC)</b>\n</b>",
+        "<b>Hi this is SiC Request Bot 🤖\nThe requests can be registered by typing<b>(#request)</b>in the group.\nRest of the things will be handled by admins itself.\nMaintainer: Chaitanya Gupta (Team SiC)</b>\n</b>",
         parse_mode = "html",
         reply_markup = InlineKeyboardMarkup(
             [
@@ -90,7 +90,7 @@ async def forwardedHandler(bot:Update, msg:Message):
     forwardInfo = msg.forward_from_chat
     if forwardInfo.type == "channel":   # If message forwarded from channel
         await msg.reply_text(
-            f"<b>Hey😁, Your Channel ID is <code>{forwardInfo.id}</code>\n\n😊Join @AJPyroVerse & @AJPyroVerseGroup for getting more awesome 🤖bots like this.</b>",
+            f"<b>Hey😁, Your Channel ID is <code>{forwardInfo.id}</code>\n</b>",
             parse_mode = "html"
         )
     return
