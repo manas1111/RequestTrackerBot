@@ -300,18 +300,14 @@ async def requestHandler(bot:Update, msg:Message):
                 parse_mode = "html",
                 reply_to_message_id = msg.message_id,
                 reply_markup = InlineKeyboardMarkup(
-		reply_markup = InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
                                 "⏳Request Status⏳",
-                                url = f"https://t.me/c/{channelIDPro}/{requestMSG.message_id}")
-			    InlineKeyboardButton(
-				    "Upload Channel",
-				    url=f"https://t.me/+jHVn7RNv9WE4ZDk1"
+                                url = f"https://t.me/c/{channelIDPro}/{requestMSG.message_id}"
+			    button = InlineKeyboardButton("Upload Channel", "Channel")
+                            url=f"https://t.me/+jHVn7RNv9WE4ZDk1"
 			    )
-				)
-			
                         ]
                     ]
                 )
