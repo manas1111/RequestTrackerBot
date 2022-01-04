@@ -65,8 +65,8 @@ async def startHandler(bot:Update, msg:Message):
             [
                 [
                     InlineKeyboardButton(
-                        "Request Channel",
-                        url = f"https://t.me/+w2s3RwJ5wTFjZGU1"
+                        "Upload Channel",
+                        url = f"https://t.me/+jHVn7RNv9WE4ZDk1"
                     )
                 ]
             ]
