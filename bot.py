@@ -59,9 +59,20 @@ requestRegex = "#[rR][eE][qQ][uU][eE][sS][tT] "
 async def startHandler(bot:Update, msg:Message):
     botInfo = await bot.get_me()
     await msg.reply_text(
-        "<b>Hi this is SiC Request Bot\nThe requests can be registered by typing<b> #request</b> in the group.\nRest of the things will be handled by admins itself\nMaintainer: Chaitanya Gupta (Team SiC)</b>\n</b>",
+        "<b>Hi this is SiC Request Bot\nThe requests can be registered by typing<b>(#request)</b>in the group.\nRest of the things will be handled by admins itself.\nMaintainer: Chaitanya Gupta (Team SiC)</b>\n</b>",
         parse_mode = "html",
- 
+        reply_markup = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "Request Channel",
+                        url = f"https://t.me/+w2s3RwJ5wTFjZGU1"
+                    )
+                ]
+            ]
+        )
+    )
+    return
 
 # return group id when bot is added to group
 @app.on_message(filters.new_chat_members)
