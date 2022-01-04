@@ -59,14 +59,14 @@ requestRegex = "#[rR][eE][qQ][uU][eE][sS][tT] "
 async def startHandler(bot:Update, msg:Message):
     botInfo = await bot.get_me()
     await msg.reply_text(
-        "<b>Hi this is SiC Request Bot 🤖\nThe requests can be registered by typing<b>(#request)</b>in the group.\nRest of the things will be handled by admins itself.\nMaintainer: Chaitanya Gupta (Team SiC)</b>\n</b>",
+        "<b>Hi, I am Request Tracker Bot🤖.\nIf you hadn't added me in your Group & Channel then ➕add me now.\n\nHow to Use me?</b>\n\t1. Add me to your Group & CHannel.\n\t2. Make me admin in both Channel & Group.\n\t3. Give permission to Post , Edit & Delete Messages.\n\t4. Now send Group ID & Channel ID in this format <code>/add GroupID ChannelID</code>.\nNow Bot is ready to be used.\n\n<b>😊Join @AJPyroVerse & @AJPyroVerseGroup for getting more awesome 🤖bots like this.</b>",
         parse_mode = "html",
         reply_markup = InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "Upload Channel",
-                        url = f"https://t.me/+jHVn7RNv9WE4ZDk1"
+                        "➕Add me to your Group.",
+                        url = f"https://telegram.me/{botInfo.username}?startgroup=true"
                     )
                 ]
             ]
@@ -90,7 +90,7 @@ async def forwardedHandler(bot:Update, msg:Message):
     forwardInfo = msg.forward_from_chat
     if forwardInfo.type == "channel":   # If message forwarded from channel
         await msg.reply_text(
-            f"<b>Hey😁, Your Channel ID is <code>{forwardInfo.id}</code>\n</b>",
+            f"<b>Hey😁, Your Channel ID is <code>{forwardInfo.id}</code>\n\n😊Join @AJPyroVerse & @AJPyroVerseGroup for getting more awesome 🤖bots like this.</b>",
             parse_mode = "html"
         )
     return
@@ -305,7 +305,13 @@ async def requestHandler(bot:Update, msg:Message):
                             InlineKeyboardButton(
                                 "⏳Request Status⏳",
                                 url = f"https://t.me/c/{channelIDPro}/{requestMSG.message_id}"
-			    )
+                            )
+                        ],
+                        [
+                            InlineKeyboardButton(
+                                "⏳Request Status⏳",
+                                url = f"https://t.me/c/{channelIDPro}/{requestMSG.message_id}"
+                                )
                         ]
                     ]
                 )
@@ -339,8 +345,7 @@ async def callBackButton(bot:Update, callback_query:CallbackQuery):
                         return await callback_query.answer(
                             "This request Is Completed🥳...\nCheckout in Channel😊",
                             show_alert = True
-						)
-					
+                        )
                     user = await bot.get_chat_member(int(channelID), callback_query.from_user.id)
                     if user.status not in ("administrator", "creator"): # If accepting, rejecting request tried to be done by neither admin nor owner
                         await callback_query.answer(
@@ -356,7 +361,6 @@ async def callBackButton(bot:Update, callback_query:CallbackQuery):
                             result = "COMPLETED"
                             groupResult = "is Completed🥳."
                             button = InlineKeyboardButton("Request Completed✅", "completed")
-                            url=f"https://t.me/+jHVn7RNv9WE4ZDk1"
                         elif data == "unavailable":
                             result = "UNAVAILABLE"
                             groupResult = "has been rejected💔 due to Unavailablity🥲."
@@ -405,4 +409,3 @@ async def callBackButton(bot:Update, callback_query:CallbackQuery):
 """Bot is Started"""
 print("Bot has been Started!!!")
 app.run()
-
