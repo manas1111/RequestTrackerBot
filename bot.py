@@ -338,8 +338,8 @@ async def callBackButton(bot:Update, callback_query:CallbackQuery):
                     elif data == "completed":
                         return await callback_query.answer(
                             "This request Is Completed🥳...\nCheckout in Channel😊",
-                            show_alert = True
-                        ) reply_markup = InlineKeyboardMarkup(
+                            show_alert = True )
+                        reply_markup = InlineKeyboardMarkup(
                             [
                                 [
                                     InlineKeyboardButton(
