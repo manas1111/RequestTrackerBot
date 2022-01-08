@@ -269,14 +269,14 @@ async def requestHandler(bot:Update, msg:Message):
                     [
                         [
                             InlineKeyboardButton(
-                                "Requested Message",
-                                url = f"https://t.me/c/{groupIDPro}/{msg.message_id}"
+                                "Already Uploaded📍",
+                                "Please search in UPLOADS channel"
                             )
                         ],
                         [
                             InlineKeyboardButton(
-                                "🚫Reject",
-                                "reject"
+                                "🚫Reject/Request again",
+                                "Request again with CORRECT DETAILS"
                             ),
                             InlineKeyboardButton(
                                 "Done✅",
@@ -293,7 +293,7 @@ async def requestHandler(bot:Update, msg:Message):
                 )
             )
 
-            replyText = f"<b>👋 Hello {mentionUser} !!\n\n📍 Your Request for {contentRequested} has been submitted to the admins.\n\n🚀 Your Request Will Be Uploaded soon on the UPLOADS CHANNEL.\n\n📌 Please Note that Admins might be busy. So, this may take more time.\n\n👇 See Your Request Status Here 👇</b>"
+            replyText = f"<b>👋 Hello {mentionUser} !!\n\n📍 Your Request for {contentRequested} added to queue.\n\n🚀 Your Request Will Be Uploaded soon on the UPLOADS CHANNEL.\n\n📌 Please Note that Admins might be busy. So, this may take more time.\n\n👇 See Your Request Status Here 👇</b>"
 
             # Sending message for user in group
             await msg.reply_text(
@@ -338,7 +338,7 @@ async def callBackButton(bot:Update, callback_query:CallbackQuery):
                         )
                     elif data == "completed":
                         return await callback_query.answer(
-                            "This request Is Completed🥳...\nCheckout in Channel😊",
+                            "This request Is Completed🥳...\nCheckout in UPLOADS Channel😊",
                             show_alert = True
                         )
                     user = await bot.get_chat_member(int(channelID), callback_query.from_user.id)
