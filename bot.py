@@ -269,14 +269,14 @@ async def requestHandler(bot:Update, msg:Message):
                     [
                         [
                             InlineKeyboardButton(
-                                "Already Uploaded📍",
-                                "Please search in UPLOADS channel"
+                                "Requested Message",
+                                url = f"https://t.me/c/{groupIDPro}/{msg.message_id}"
                             )
                         ],
                         [
                             InlineKeyboardButton(
-                                "🚫Reject/Request again",
-                                "Request again with CORRECT DETAILS"
+                                "🚫Reject",
+                                "reject"
                             ),
                             InlineKeyboardButton(
                                 "Done✅",
@@ -293,7 +293,7 @@ async def requestHandler(bot:Update, msg:Message):
                 )
             )
 
-            replyText = f"<b>👋 Hello {mentionUser} !!\n\n📍 Your Request for {contentRequested} added to queue.\n\n🚀 Your Request Will Be Uploaded soon on the UPLOADS CHANNEL.\n\n📌 Please Note that Admins might be busy. So, this may take more time.\n\n👇 See Your Request Status Here 👇</b>"
+            replyText = f"<b>👋 Hello {mentionUser} !!\n\n📍 Your Request for {contentRequested} added to queue.\n\n🚀 It Will Be Uploaded soon on the UPLOADS CHANNEL.\n\n📌 Please Note that Admins might be busy. So, this may take more time.\n\n👇 See Your Request Status Here 👇</b>"
 
             # Sending message for user in group
             await msg.reply_text(
@@ -338,7 +338,7 @@ async def callBackButton(bot:Update, callback_query:CallbackQuery):
                         )
                     elif data == "completed":
                         return await callback_query.answer(
-                            "This request Is Completed🥳...\nCheckout in UPLOADS Channel😊",
+                            "This request Is Completed🥳...\nCheckout in Channel😊",
                             show_alert = True
                         )
                     user = await bot.get_chat_member(int(channelID), callback_query.from_user.id)
@@ -351,7 +351,7 @@ async def callBackButton(bot:Update, callback_query:CallbackQuery):
                         if data == "reject":
                             result = "REJECTED"
                             groupResult = "has been Rejected💔."
-                            button = InlineKeyboardButton("Request Rejected🚫", "rejected")
+                            button = InlineKeyboardButton("Request Rejected🚫", "request again")
                         elif data == "done":
                             result = "COMPLETED"
                             groupResult = "is Completed🥳."
@@ -359,7 +359,7 @@ async def callBackButton(bot:Update, callback_query:CallbackQuery):
                         elif data == "unavailable":
                             result = "UNAVAILABLE"
                             groupResult = "has been rejected💔 due to Unavailablity🥲."
-                            button = InlineKeyboardButton("Request Rejected🚫", "rejected")
+                            button = InlineKeyboardButton("Request Rejected🚫", "request again")
 
                         msg = callback_query.message
                         userid = 12345678
