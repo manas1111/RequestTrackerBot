@@ -293,7 +293,7 @@ async def requestHandler(bot:Update, msg:Message):
                 )
             )
 
-            replyText = f"<b>👋 Hello {mentionUser} !!\n\n Your Request for {contentRequested} added to queue.\n\n 👇 See Your Request Status Here 👇</b>"
+            replyText = f"<b>👋 Hello {mentionUser} !!\n\n Your Request has been added to queue.\n\n 👇 See Your Request Status Here 👇</b>"
 
             # Sending message for user in group
             await msg.reply_text(
@@ -333,7 +333,7 @@ async def callBackButton(bot:Update, callback_query:CallbackQuery):
                     data = callback_query.data  # Callback Data
                     if data == "rejected":
                         return await callback_query.answer(
-                            "This request is rejected💔...\nAsk admins in group for more info💔",
+                            "This request is rejected💔...\nSearch in channel and request again",
                             show_alert = True
                         )
                     elif data == "completed":
@@ -391,7 +391,7 @@ async def callBackButton(bot:Update, callback_query:CallbackQuery):
                         )
 
                         # Result of request sent to group
-                        replyText = f"<b>Dear {mentionUser}🧑\nYour request for {contentRequested} {groupResult}\n\n(Team SiC)</b>"
+                        replyText = f"<b>Dear {mentionUser}🧑\nYour request for {groupResult}\n\n<b>(Team SiC)</b></b>"
                         await bot.send_message(
                             int(groupID),
                             replyText,
