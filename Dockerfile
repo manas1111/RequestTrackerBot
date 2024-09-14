@@ -1,7 +1,6 @@
 FROM debian:latest
 
 RUN apt update && apt upgrade -y
-RUN pip3 install --upgrade pip
 RUN apt install git python3-pip -y
 RUN git clone https://github.com/AJTimePyro/RequestTrackerBot
 WORKDIR /RequestTrackerBot
