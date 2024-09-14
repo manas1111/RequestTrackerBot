@@ -35,7 +35,6 @@ from re import match, search
 
 """Connecting to Bot"""
 app = Client(
-    session_name = "RequestTrackerBot",
     api_id = Config.API_ID,
     api_hash = Config.API_HASH,
     bot_token = Config.BOT_TOKEN
