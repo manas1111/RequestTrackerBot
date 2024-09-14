@@ -5,4 +5,4 @@ RUN apt install git python3-pip -y
 RUN git clone https://github.com/AJTimePyro/RequestTrackerBot
 WORKDIR /RequestTrackerBot
 RUN pip3 install -U -r requirements.txt
-web:  python3 bot.py
+CMD python3 bot.py
