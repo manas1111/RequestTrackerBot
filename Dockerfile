@@ -1,9 +1,11 @@
-FROM debian:latest
+FROM python:3.11.2-slim-buster
 
-RUN apt update && apt upgrade -y
-RUN apt install git python3-pip -y
-RUN python3 get-pip.py
-RUN git clone https://github.com/AJTimePyro/RequestTrackerBot
-WORKDIR /RequestTrackerBot
-RUN pip3 install -U -r requirements.txt
-CMD python3 bot.py
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD ["python3", "bot.py"]
